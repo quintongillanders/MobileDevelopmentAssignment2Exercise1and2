@@ -6,7 +6,9 @@ public class Game {
     private String genre;
     private String year;
 
-    public Game() {}
+    public Game() {
+    }
+
 
     public Game(String title, String platform, String genre, String year) {
         this.title= title;

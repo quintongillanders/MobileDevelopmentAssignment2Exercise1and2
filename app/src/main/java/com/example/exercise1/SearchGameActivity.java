@@ -1,5 +1,7 @@
 package com.example.exercise1;
 
+import static android.view.View.GONE;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,21 +39,21 @@ public class SearchGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.search_game_activity);
 
-        backButton = findViewById(R.id.backButton);
+
         recyclerView = findViewById(R.id.recyclerView);
         searchView = findViewById(R.id.searchView);
+        backButton = findViewById(R.id.backButton);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         gameList = new ArrayList<>();
-        gameAdapter = new GameAdapter(gameList);
+        gameAdapter = new GameAdapter(this, gameList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(gameAdapter);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("games")
-        .get()
+                .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                             gameList.clear();
                             for (DocumentSnapshot doc : queryDocumentSnapshots) {
@@ -59,6 +61,9 @@ public class SearchGameActivity extends AppCompatActivity {
                                 gameList.add(game);
                             }
                             gameAdapter.notifyDataSetChanged();
+                            Log.d("SearchGameActivity", "Games loaded: " + gameList.size()); // debug log
+
+                            Toast.makeText(SearchGameActivity.this, "Total games in database: " + gameList.size(), Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(SearchGameActivity.this, "failed to find games", Toast.LENGTH_SHORT).show();
@@ -68,7 +73,22 @@ public class SearchGameActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+
+                boolean found = false;
+
+                for (Game game : gameList) {
+                    if (game.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) {
+                    Toast.makeText(SearchGameActivity.this, "Search Success!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SearchGameActivity.this, "Game not found!", Toast.LENGTH_SHORT).show();
+                }
+                return true;
             }
 
             @Override
