@@ -55,15 +55,20 @@ public class SearchGameActivity extends AppCompatActivity {
         db.collection("games")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                            gameList.clear();
+                            List<Game> fetchedGames = new ArrayList<>();
                             for (DocumentSnapshot doc : queryDocumentSnapshots) {
                                 Game game = doc.toObject(Game.class);
-                                gameList.add(game);
+                                fetchedGames.add(game);
                             }
-                            gameAdapter.notifyDataSetChanged();
-                            Log.d("SearchGameActivity", "Games loaded: " + gameList.size()); // debug log
 
-                            Toast.makeText(SearchGameActivity.this, "Total games in database: " + gameList.size(), Toast.LENGTH_SHORT).show();
+                            gameAdapter.setGames(fetchedGames);
+
+                            gameList.clear();
+                            gameList.addAll(fetchedGames);
+
+                            Log.d("SearchGameActivity", "Games loaded: " + fetchedGames.size()); // debug log
+
+                            Toast.makeText(SearchGameActivity.this, "Total games in database: " + fetchedGames.size(), Toast.LENGTH_SHORT).show();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(SearchGameActivity.this, "failed to find games", Toast.LENGTH_SHORT).show();

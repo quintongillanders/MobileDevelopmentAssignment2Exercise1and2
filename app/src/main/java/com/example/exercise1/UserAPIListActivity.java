@@ -29,7 +29,7 @@ public class UserAPIListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         backButton = findViewById(R.id.backButton);
 
-        users = (List<User>) getIntent().getSerializableExtra("users");
+        fetchUsersFromAPI();
 
         userAdapter = new UserAdapter(users);
         recyclerView.setAdapter(userAdapter);
@@ -42,6 +42,10 @@ public class UserAPIListActivity extends AppCompatActivity {
                 Toast.makeText(UserAPIListActivity.this, "Back button clicked", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void fetchUsersFromAPI() {
+
     }
 }
 

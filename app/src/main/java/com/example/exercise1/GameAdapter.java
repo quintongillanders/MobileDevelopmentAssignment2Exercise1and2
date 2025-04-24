@@ -32,14 +32,23 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     Game game = games.get(position);
     Log.d("GameAdapter", "Binding:" + game.getTitle()); // debug log
     holder.gameTitle.setText(game.getTitle());
-    holder.platform.setText("Platform: " + game.getPlatform());
-    holder.genre.setText("genre: " + game.getGenre());
-    holder.year.setText("year: " + game.getYear());
+    holder.platform.setText(game.getPlatform());
+    holder.genre.setText(game.getGenre());
+    holder.year.setText(game.getYear());
 
     }
 
     @Override public int getItemCount() {
+        Log.d("GameAdapter", "Item Count: " + games.size());
         return games.size();
+    }
+
+    public void setGames(List<Game> newGames) {
+        this.games.clear();
+        this.games.addAll(newGames);
+        this.gameListFull.clear();
+        this.gameListFull.addAll(newGames);
+        notifyDataSetChanged();
     }
     public void filter(String text) {
         games.clear();

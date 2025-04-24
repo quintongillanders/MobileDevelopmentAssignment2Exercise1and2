@@ -6,40 +6,41 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="10dp"
-    android:background="#02FAFA"
-    android:textColor="#F80254">
+    android:backgroundTint="#ED3E09"
+    android:textColor="#FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#02FAFA"
+        android:layout_height="match_parent"
         android:padding="16dp"
-        android:textColor="#F80254"
+        android:textColor="#FFFFFF"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp">
+
 
         <TextView
             android:id="@+id/gameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="12dp"
             android:text="Game"
-            android:textColor="#F80254"
+            android:backgroundTint="#ED3E09"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/platform"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="92dp"
             android:text="Platform"
-            android:textColor="#F80254"
+            android:backgroundTint="#ED3E09"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/gameTitle" />
@@ -49,9 +50,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="80dp"
+            android:backgroundTint="#ED3E09"
             android:text="Genre"
-            android:textColor="#F80254"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/platform" />
@@ -61,9 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="44dp"
+            android:backgroundTint="#ED3E09"
             android:text="Year"
-            android:textColor="#F80254"
+            android:textColor="#FFFFFF"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/genre" />
