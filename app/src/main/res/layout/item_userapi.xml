@@ -13,11 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <ImageView
             android:id="@+id/avatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/crash"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Avatar"
+            android:text="Username"
             android:textSize="18sp"/>
 
         <TextView
@@ -26,7 +35,6 @@
             android:layout_height="wrap_content"
             android:text="User ID"
             android:textSize="18sp"/>
-
 
     </LinearLayout>
 

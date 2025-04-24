@@ -17,6 +17,7 @@
         <activity android:name=".UpdateGameActivity"/>
         <activity android:name=".SearchGameActivity"/>
         <activity android:name=".DeleteGameActivity"/>
+        <activity android:name=".UserAPIListActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
