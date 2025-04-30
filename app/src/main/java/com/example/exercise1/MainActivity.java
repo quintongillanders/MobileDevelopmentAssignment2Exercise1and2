@@ -77,10 +77,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, UserAPIListActivity.class);
                 startActivity(intent);
-                UserController userController = new UserController();
-                userController.start();
-                Toast.makeText(MainActivity.this, "Getting users from API", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(MainActivity.this, "Getting users from API Call", Toast.LENGTH_SHORT).show();
             }
         });
 

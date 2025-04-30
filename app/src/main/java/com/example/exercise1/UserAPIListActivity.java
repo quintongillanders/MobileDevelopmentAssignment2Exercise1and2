@@ -45,7 +45,22 @@ public class UserAPIListActivity extends AppCompatActivity {
     }
 
     private void fetchUsersFromAPI() {
+        UserController userController = new UserController(UserAPIListActivity.this, new UserController.UserFetchCallback() {
+            @Override
+            public void onUsersFetched(List<User> usersFromAPI) {
+                users.clear();
+                users.addAll(usersFromAPI);
+                userAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onError() {
+                Toast.makeText(UserAPIListActivity.this, "Error fetching users from API", Toast.LENGTH_SHORT).show();
+            }
+        });
+        userController.start();
     }
+
 }
+
 
